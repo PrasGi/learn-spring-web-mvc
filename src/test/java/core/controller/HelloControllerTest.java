@@ -20,6 +20,12 @@ public class HelloControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    void testGuestPost() throws Exception {
+        mockMvc.perform(post("/hello")).andExpectAll(
+                status().isMethodNotAllowed());
+    }
+
+    @Test
     void testGuest() throws Exception {
         mockMvc.perform(get("/hello")).andExpectAll(
                 status().isOk(),
